@@ -1,0 +1,46 @@
+# Configuration for Module A: Bare PCB Fabrication Inspection
+pipeline:
+  name: "bare_pcb_classical_cv"
+  version: "1.0.0"
+
+preprocessing:
+  target_size: [640, 640]  # Standard DeepPCB resolution
+  gaussian_kernel: [5, 5]
+  gaussian_sigma: 1.0
+  median_kernel: 3
+  use_clahe: false          # DeepPCB images are already high-contrast binary/clean CCD scans
+  clahe_clip_limit: 2.0
+  clahe_grid_size: [8, 8]
+  binarization_method: "otsu" # "otsu" or "adaptive" or "fixed"
+  fixed_threshold: 128
+
+registration:
+  enabled: true
+  method: "orb"             # "orb" or "ecc" or "phase_correlation"
+  max_features: 1000
+  match_ratio: 0.75
+  ransac_reproj_threshold: 3.0
+  transform_type: "affine"  # "affine" or "homography"
+
+defect_extraction:
+  # Polarity difference thresholds
+  difference_threshold: 127
+  # Morphological cleanup
+  morph_kernel_size: 3
+  morph_close_kernel_size: 7
+  morph_iterations: 1
+  # Minimum and maximum defect area in pixels
+  min_defect_area: 25
+  max_defect_area: 12000
+  # Bounding box padding in pixels
+  bbox_padding: 8
+
+classification_rules:
+  # Aspect ratio threshold to distinguish trace break (open) from mousebite
+  open_aspect_ratio_min: 1.8
+  # Circularity threshold for pin-hole
+  pinhole_circularity_min: 0.55
+  pinhole_max_area: 350
+  # Protrusion thresholds for spur vs spurious copper
+  spur_max_area: 500
+  copper_blob_min_distance_from_trace: 6

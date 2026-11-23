@@ -1,0 +1,28 @@
+# Master Configuration for Intelligent PCB Defect Inspection System
+system:
+  app_name: "Intelligent PCB Defect Inspection System"
+  version: "1.0.0"
+  phase: "Phase 1 - Classical Computer Vision"
+  debug: false
+  log_level: "INFO"
+  random_seed: 42
+
+paths:
+  bare_pcb_dir: "datasets/bare_pcb"
+  assembled_pcb_dir: "datasets/assembled_pcb"
+  output_intermediate_dir: "outputs/intermediate"
+  output_reports_dir: "outputs/reports"
+  output_history_dir: "outputs/history"
+
+storage:
+  db_path: "outputs/history/inspection_history.db"
+
+decision_engine:
+  # Review confidence threshold: if confidence < review_threshold, decision = REVIEW
+  review_confidence_threshold: 0.65
+  # Minimum valid contrast for input validation (std dev of intensities)
+  min_contrast_std: 15.0
+  # Minimum registration inlier ratio required for confident alignment
+  min_registration_inlier_ratio: 0.40
+  # Maximum allowed alignment displacement error in pixels before triggering REVIEW
+  max_alignment_error_px: 25.0

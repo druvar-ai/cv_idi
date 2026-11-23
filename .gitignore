@@ -1,0 +1,57 @@
+# Python Bytecode & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Pytest & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Streamlit & IDEs
+.streamlit/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment & Secrets
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+
+# OS Specific
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Transient Runtime Databases & Inspection Output Artifacts
+outputs/history/*.db
+outputs/history/*.db-journal
+outputs/intermediate/*
+!outputs/intermediate/.gitkeep
+outputs/reports/*
+!outputs/reports/.gitkeep

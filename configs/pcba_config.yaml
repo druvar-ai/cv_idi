@@ -1,0 +1,37 @@
+# Configuration for Module B: Assembled PCB (PCBA) Inspection
+pipeline:
+  name: "pcba_classical_cv"
+  version: "1.0.0"
+
+preprocessing:
+  resize_factor: 0.5        # Downsample 3840x2748 to 1920x1374 for faster responsive processing
+  gaussian_kernel: [5, 5]
+  gaussian_sigma: 1.0
+  use_clahe: true
+  clahe_clip_limit: 2.5
+  clahe_grid_size: [8, 8]
+
+registration:
+  enabled: true
+  method: "orb"             # "orb" feature matching for macro board alignment
+  max_features: 2500
+  match_ratio: 0.70
+  ransac_reproj_threshold: 4.0
+  transform_type: "homography"
+
+component_inspection:
+  # Normalized Cross Correlation (NCC) template matching threshold
+  # Correlation below this value indicates component absence or severe corruption
+  missing_correlation_threshold: 0.50
+  # Edge density ratio threshold (test / template). Empty pad has very low edge density
+  missing_edge_density_ratio: 0.45
+
+  # Shift / Displacement tolerances in pixels (at evaluated resolution)
+  max_allowed_shift_px: 8.0
+  critical_shift_px: 16.0
+
+  # Angular rotation tolerance in degrees
+  rotation_tolerance_deg: 10.0
+
+  # Search margin around expected component location for displacement peak
+  search_margin_px: 36

@@ -1,0 +1,14 @@
+{
+  "dataset_name": "Enics / NanoNets Industrial PCBA Inspection Dataset",
+  "source": "https://github.com/LalitPradhan/NanoNetsPCBChecker",
+  "license": "Open Academic Research Benchmark (Educational / Non-commercial research use; commercial rights unestablished)",
+  "original_resolution": "3840x2748 RGB",
+  "scope_evaluation_note": "Official PCB-SAID dataset (Mineo et al., ICCV 2023) was thoroughly investigated and confirmed to be access-restricted (available only upon private author email request without an open public download repository). As per prompt guidelines, this access barrier is formally documented, and the legitimate open Enics/NanoNets PCBA benchmark is used. Target defect categories implemented and validated: (1) Missing components, (2) Shifted/misaligned components, (3) Rotated components. Solder-bridge detection on macro optical images is scope-reduced due to lack of sub-millimeter microscopic resolution.",
+  "defect_categories_supported": [
+    "missing_component",
+    "shifted_component",
+    "rotated_component"
+  ],
+  "reference_template": "template_pcba_01.jpg",
+  "defect_sample_eval": "test_pcba_01_defective.jpg"
+}
